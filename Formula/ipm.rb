@@ -2,21 +2,20 @@
 # frozen_string_literal: true
 
 class Ipm < Formula
-  desc "Package manager for JavaScript (npm fork)"
+  desc "Package manager for JavaScript"
   homepage "https://github.com/mattstrick/ipm-cli"
-  url "https://github.com/mattstrick/ipm-cli/archive/refs/tags/v11.10.1.tar.gz"
-  sha256 "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
-  license "Artistic-2.0"
+  url "https://github.com/mattstrick/ipm-cli/archive/refs/tags/v0.1.0.tar.gz"
+  sha256 "fc1d84930bf817b6da5b77b270e4461d946008659947be78839bf1bee5e81973"
+  license "MIT"
 
   depends_on "node"
-  depends_on "python" => :build # for node-gyp in dependency tree
 
   def install
-    system "npm", "install", *std_npm_args
-    bin.install_symlink libexec.glob("bin/*")
+    libexec.install "bin", "lib", "package.json"
+    (bin/"ipm").write_env_script libexec/"bin/ipm.js", PATH: "#{Formula["node"].opt_bin}:$PATH"
   end
 
   test do
-    assert_match "11.10.1", shell_output("#{bin}/ipm --version")
+    assert_match "0.1.0", shell_output("#{bin}/ipm --version")
   end
 end
