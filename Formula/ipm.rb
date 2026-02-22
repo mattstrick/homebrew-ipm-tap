@@ -12,8 +12,11 @@ class Ipm < Formula
 
   def install
     libexec.install "bin", "lib", "package.json"
-    chmod 0755, libexec/"bin/ipm.js"
-    (bin/"ipm").write_env_script libexec/"bin/ipm.js", PATH: "#{Formula["node"].opt_bin}:$PATH"
+    (bin/"ipm").write <<~EOS
+      #!/bin/bash
+      exec "#{Formula["node"].opt_bin}/node" "#{libexec}/bin/ipm.js" "$@"
+    EOS
+    chmod 0755, bin/"ipm"
   end
 
   test do
