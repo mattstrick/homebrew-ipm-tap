@@ -5,7 +5,7 @@ class Ipm < Formula
   desc "Package manager for JavaScript"
   homepage "https://github.com/mattstrick/ipm-cli"
   url "https://github.com/mattstrick/ipm-cli/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "513151d86029b8697e5ae912d247546d01c2b5b8e439309a8f70c158fdbfad07"
+  sha256 "256e9b85371c7bd8719ecc2ef5d124e23beda984f6c8aa078e120dc94a5c980f"
   license "MIT"
 
   depends_on "node"
