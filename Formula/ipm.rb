@@ -4,8 +4,8 @@
 class Ipm < Formula
   desc "Package manager for JavaScript"
   homepage "https://github.com/mattstrick/ipm-cli"
-  url "https://github.com/mattstrick/ipm-cli/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "256e9b85371c7bd8719ecc2ef5d124e23beda984f6c8aa078e120dc94a5c980f"
+  url "https://github.com/mattstrick/ipm-cli/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "99a84af768891ccb129fe948e90a0616f26b70f54ad7923e074c71bac10eef33"
   license "MIT"
 
   depends_on "node"
@@ -20,6 +20,6 @@ class Ipm < Formula
   end
 
   test do
-    assert_match "0.2.0", shell_output("#{bin}/ipm --version")
+    assert_match "0.2.1", shell_output("#{bin}/ipm --version")
   end
 end
